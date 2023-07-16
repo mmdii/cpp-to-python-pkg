@@ -67,10 +67,10 @@ if you want to build in windows follow here :
 - Run the following command to compile the C code into a shared library:
 
     ```cmd
-    cl.exe /LD primes.c /Feprimes.pyd /I C:\Python39\include /link /LIBPATH:C:\Python3.9\libs
+    cl.exe /LD primes.c /Feprimes.pyd /I C:\Python39\include /link /LIBPATH:C:\Python39\libs
     ```
 
-    Replace C:\Python3.9 with the path to your Python installation directory.
+    Replace C:\Python39 with the path to your Python installation directory.
 
 - After the compilation is successful, the ```primes.pyd``` file (which is the shared library containing the compiled code) should be generated in the same directory as the ```primes.c``` file.
 
