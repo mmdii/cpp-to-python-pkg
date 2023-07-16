@@ -1,0 +1,75 @@
+# How to Use Python/C API to Build a Python Extension Module to Find Prime Numbers
+
+## Step 1 : Write C code using Python C API
+
+go to Python C API site and read the documentaion to how to use Python C API with C.
+
+[Python/C API Docs.](https://docs.python.org/3/c-api/index.html)
+
+The Python C API is a set of functions and macros that allow you to write C code that interacts with the Python interpreter. In this code, you can see several places where the Python C API is used:
+
+- ```PyObject```: This is a type that represents a Python object in C code. It's used throughout the code to create and manipulate Python objects.
+- ```PyArg_ParseTuple```: This function is used to parse the arguments passed to the find_primes function. It takes a format string and a pointer to a variable for each argument, and returns a boolean indicating whether the parsing was successful.
+- ```PyList_New```: This function is used to create a new empty list to store the prime numbers.
+- ```PyLong_FromLong```: This function is used to create a new long integer object, which is used to represent the prime numbers.
+- ```PyList_Append```: This function is used to add a new element to the list of prime numbers.
+- ```Py_DECREF```: This macro is used to decrement the reference count of a Python object. It's important to do this when you're done using an object, to avoid memory leaks and other issues.
+
+In terms of where the Python C API is located, it's actually a set of header files and libraries that are included with the Python interpreter. When you install Python on your system, the header files and libraries are typically installed in a location such as /usr/include/python3.x and /usr/lib/python3.x, where x is the version number of Python you're using.
+
+## Step 2 : Generate a shared library
+
+Now that you have the ```C file```, you need to compile it into a shared library that you can use in your Python code. To do this, run the following command in the terminal:
+
+```bash
+gcc -shared -pthread -fPIC -fwrapv -O2 -Wall -fno-strict-aliasing -I/usr/include/python3.11 -o primes.so primes.c
+
+```
+
+Note that you need to replace /usr/include/python3.11 with the path to the Python header files on your system. This path may be different depending on your Python version and installation.
+
+## Step 3 : Use the shared library in your Python code
+
+Now that you have generated the shared library, you can use it in your Python code. To do this, simply import the primes module in your Python code:
+
+```python
+import primes
+
+primes_list = primes.find_primes(100)
+print(primes_list)
+```
+
+This should print out a list of prime numbers up to 100.
+
+## Windows
+
+To build the example code I provided on Windows, you'll need to follow these steps:
+
+- Install a C compiler: You'll need a C compiler to build the shared library. One option is to install the Microsoft Visual C++ Build Tools. You can download and install them from the following link: [https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019 ↗](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019)
+
+- Install Python: You'll need to install a Python distribution that includes the Python C API header files and libraries. One option is to install the official Python distribution from the following link: [https://www.python.org/downloads/windows/ ↗](https://www.python.org/downloads/windows/)
+
+- Open a command prompt: Open a command prompt by pressing the Windows key + R, typing "cmd", and pressing Enter.
+
+- Navigate to the directory containing the `primes.c` file: Use the `cd` command to navigate to the directory containing the `primes.c` file.
+
+- Build the shared library: Run the following command to build the shared library:
+
+   ```cmd
+   cl /LD /I C:\Python39\include /Feprimes.pyd primes.c /link /LIBPATH:C:\Python39\libs
+   ```
+
+   This command assumes that you've installed Python 3.9 in the default location (`C:\Python39`). If you've installed Python in a different location, you'll need to update the paths in the command accordingly. This command will generate a file called `primes.pyd`, which is the shared library that you can import in Python.
+
+- Use the shared library in Python: To use the shared library in Python, simply import the `primes` module and call the `find_primes()` function:
+
+   ```python
+   import primes
+
+   primes_list = primes.find_primes(100)
+   print(primes_list)
+   ```
+
+This should print out a list of prime numbers up to 100.
+
+Note that building C extensions on Windows can be more complex than on other platforms, and there are many factors that can affect.
