@@ -2,6 +2,26 @@
 
 This repository contains several methods to write C++ code and convert it into a Python package. The resulting Python package can be used in any Python project, allowing you to take advantage of the performance benefits of C++ without sacrificing the ease of use of Python.
 
+- [Cython ↗](https://cython.org/)
+- [pybind11 ↗](https://pybind11.readthedocs.io/en/stable/)
+- [ctypes ↗](https://docs.python.org/3/library/ctypes.html)
+- [Python-C-API ↗](https://docs.python.org/3/c-api/)
+- [SWIG ↗](http://www.swig.org/)
+
+These tools provide different levels of control and flexibility for integrating C/C++ code with Python, and may be preferred depending on the specific use case.
+
+To ensure compatibility across multiple operating systems, we have tested each of these tools on Linux, macOS, and Windows. The following chart shows the compatibility of each tool with each operating system:
+
+| Tool        | Linux | macOS | Windows |
+| ----------- | ----- | ----- | ------- |
+| Cython      | ✔️    | ✔️    | ✔️      |
+| pybind11    | ✔️    | ✔️    | ✔️      |
+| ctypes      | ✔️    | ✔️    | ✔️      |
+| Python-C-API | ✔️    | ✔️    | ✔️      |
+| SWIG        | ✔️    | ✔️    | ✔️      |
+
+Note that some tools may require additional setup or configuration on certain operating systems. Please refer to the documentation for each tool for more information.
+
 ## Getting Started
 
 To get started, simply clone this repository to your local machine:
