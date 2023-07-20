@@ -1,0 +1,11 @@
+README.md
+_primes.so
+primes.cpp
+primes.py
+primes_wrap.cxx
+setup.py
+primes.egg-info/PKG-INFO
+primes.egg-info/SOURCES.txt
+primes.egg-info/dependency_links.txt
+primes.egg-info/requires.txt
+primes.egg-info/top_level.txt

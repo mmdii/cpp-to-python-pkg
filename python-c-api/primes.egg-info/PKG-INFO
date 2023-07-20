@@ -1,3 +1,15 @@
+Metadata-Version: 2.1
+Name: primes
+Version: 1.0.0
+Summary: This Package will calculate prime numbers
+Home-page: https://github.com/mmdii/cpp-to-python-pkg
+Author: Mohammad Mohammadi
+Author-email: mohammad.mohammadii1997@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
 # How to Use Python/C API to Build a Python Extension Module to Find Prime Numbers
 
 ## Step 1 : Write C code using Python C API
@@ -73,27 +85,3 @@ To build the example code I provided on Windows, you'll need to follow these ste
 This should print out a list of prime numbers up to 100.
 
 Note that building C extensions on Windows can be more complex than on other platforms, and there are many factors that can affect.
-
-## Step 4 : Generate Python Package To Install With pip3 or pip both on windows and linux
-
-To package a Python C extension module along with a pre-built shared library, you can create a setup.py file that specifies the package metadata and how to include the shared library in the package.
-
-In this example, we include our Python C extension module ```primes.c``` as an extension module. We specify the shared library prime as a dependency using the libraries option, and include the current directory (".") as a search path for the library using the library_dirs option.
-
-We also include the shared library file primes.so as a data file using the data_files option. This will include the file in the package when it is built.
-
-Once you have created your setup.py file, you can build the package by running the following command in the directory where the ```setup.py``` file is located:
-
-```bash
-python3 setup.py sdist bdist_wheel
-```
-
-This will create a source distribution (sdist) and a binary distribution (bdist_wheel) of your package in the dist/ directory.
-
-You can then install the package using pip3 or pip by running:
-
-```bash
-pip3 install primes-1.0.0.tar.gz
-```
-
-This will install the package along with the Python C extension module and the shared library, and make it available for use in your Python code. Note that the shared library file must be compatible with the system architecture and Python version of the user's system in order to work correctly.

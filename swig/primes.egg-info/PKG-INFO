@@ -1,3 +1,15 @@
+Metadata-Version: 2.1
+Name: primes
+Version: 1.0.0
+Summary: This Package will calculate prime numbers
+Home-page: https://github.com/mmdii/cpp-to-python-pkg
+Author: Mohammad Mohammadi
+Author-email: mohammad.mohammadii1997@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
 # How to Use SWIG Build a Python Extension Module to Find Prime Numbers
 
 ## Step 1 : Create a file called `primes.i`
@@ -129,27 +141,3 @@ That's it! You should now have SWIG installed on your Debian or Windows system.
    ```
 
    This should print out a list of prime numbers up to 100.
-
-## Step 7 : Generate Python Package To Install With pip3 or pip both on windows and linux
-
-To package a SWIG module along with a pre-built shared library, you can create a setup.py file that specifies the package metadata and how to include the shared library in the package.
-
-In this example, we include our SWIG module primes.i as an extension module. The Extension object specifies the sources files primes_wrap.cxx and primes.cpp as well as the shared library prime as a dependency using the libraries option, and include the current directory (".") as a search path for the library using the library_dirs option. We also include the SWIG options -c++ and -py3 to generate a C++ wrapper for Python 3.
-
-We also include the shared library file _primes.so as a data file using the data_files option. This will include the file in the package when it is built.
-
-Once you have created your setup.py file, you can build the package by running the following command in the directory where the setup.py file is located:
-
-```bash
-python3 setup.py sdist bdist_wheel
-```
-
-This will create a source distribution (sdist) and a binary distribution (bdist_wheel) of your package in the dist/ directory.
-
-You can then install the package using pip3 or pip by running:
-
-```bash
-pip3 install primes-1.0.0.tar.gz
-```
-
-This will install the package along with the SWIG module and the shared library, and make it available for use in your Python code. Note that the shared library file must be compatible with the system architecture and Python version of the user's system in order to work correctly.

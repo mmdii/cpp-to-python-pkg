@@ -46,3 +46,27 @@ import prime
 print(prime.is_prime(7))  # True
 print(prime.is_prime(12))  # False
 ```
+
+## Step 5 : Generate Python Package To Install With pip3 or pip both on windows and linux
+
+To package a Pybind11 module along with a pre-built shared library, you can create a setup.py file that specifies the package metadata and how to include the shared library in the package.
+
+In this example, we include our Pybind11 module ```primes.cpp``` as an extension module. We specify the shared library prime as a dependency using the libraries option, and include the current directory (".") as a search path for the library using the library_dirs option.
+
+We also include the shared library file ```prime.cpython-311-x86_64-linux-gnu.so``` as a data file using the data_files option. This will include the file in the package when it is built.
+
+Once you have created your setup.py file, you can build the package by running the following command in the directory where the setup.py file is located:
+
+```bash
+python3 setup.py sdist bdist_wheel
+```
+
+This will create a source distribution (sdist) and a binary distribution (bdist_wheel) of your package in the dist/ directory.
+
+You can then install the package using pip3 or pip by running:
+
+```bash
+pip3 install primes-1.0.0.tar.gz
+```
+
+This will install the package along with the Pybind11 extension module and the shared library, and make it available for use in your Python code. Note that the shared library file must be compatible with the system architecture and Python version of the user's system in order to work correctly.

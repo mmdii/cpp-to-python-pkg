@@ -85,3 +85,14 @@ Disadvantages:
 3. [`cythonize` ↗](https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html#compiling-cython-code): cythonize is a command-line tool that comes with Cython and is used to compile Cython code. It can also be used to generate C/C++ extension modules from Cython code, making it a useful tool for integrating C/C++ code with Python.
 
 4. [`f2py` ↗](https://numpy.org/doc/stable/f2py/): f2py is a command-line tool that comes with NumPy and is used to wrap Fortran code in Python. It can be used to generate Python extension modules from Fortran code, making it a useful tool for integrating Fortran code with Python for data processing and analysis.
+
+## Run Time Performance
+
+| Tool           | Time taken (seconds) |
+|----------------|---------------------|
+| SWIG           | 0.0126              |
+| Python C-API   | 0.0107              |
+| Pybind11       | 0.0000530           |
+| Cython         | 0.00885             |
+
+This table compares the ```run time performance``` of each tool for a test with ```10,000``` numbers. The times are rounded to four decimal places for clarity. The specific performance of each tool can vary depending on the specific use case and implementation details, so it's important to benchmark your specific code to get accurate results.
