@@ -1,7 +1,7 @@
 import ctypes
 
 # Load the shared library
-primes_lib = ctypes.CDLL("./primes.so")
+primes_lib = ctypes.CDLL("primes.so")
 
 # Define the argument and return types for the is_prime function
 primes_lib.is_prime.argtypes = [ctypes.c_int]
